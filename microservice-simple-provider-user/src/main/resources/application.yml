@@ -1,6 +1,8 @@
 server:
   port: 8000
 spring:
+  application:
+    name: microservice-provider-user
   jpa:
     generate-ddl: false
     show-sql: true
@@ -10,5 +12,22 @@ spring:
     platform: h2
     schema: classpath:schema.sql
     data: classpath:data.sql
+
+eureka:
+  client:
+    healthcheck:
+        enabled: true
+    serviceUrl:
+        defaultZone: http://localhost:8761/eureka
+  instance:
+    prefer-ip-address: true
+
 logging:
   level: info
+info:
+  app:
+    name: @project.artifactId@
+    encoding: @project.build.sourceEncoding@
+    java:
+      source: @java.version@
+      target: @java.version@
