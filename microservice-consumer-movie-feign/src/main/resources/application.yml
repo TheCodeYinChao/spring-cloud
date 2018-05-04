@@ -3,7 +3,6 @@ server:
 
 api.user.url: http://localhost:8000/
 
-
 eureka:
   client:
     healthcheck:
@@ -12,3 +11,6 @@ eureka:
         defaultZone: http://user:123456@peer1:8761/eureka
   instance:
     prefer-ip-address: true
+logging:
+  level:
+    com.example.demo.feignclient.UserFeignClient: debug
