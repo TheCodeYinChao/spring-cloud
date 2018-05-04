@@ -1,7 +1,7 @@
 package com.example.demo.controller;
 
+import com.example.demo.feignclient.UserFeignClient;
 import com.example.demo.vo.User;
-import com.netflix.discovery.converters.Auto;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -27,9 +27,14 @@ public class MovieController {
     @Autowired
     private LoadBalancerClient loadBalancerClient;
 
+    @Autowired
+    private UserFeignClient userFeignClient;
+
     @GetMapping("user/{id}")
     public User findById(@PathVariable Long id){
-        return restTemplate.getForObject("http://microservice-provider-user/"+id,User.class);
+
+        return userFeignClient.findById(id);
+//        return restTemplate.getForObject("http://microservice-provider-user/"+id,User.class);
     }
 
     @GetMapping("log-instance")
