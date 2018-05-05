@@ -24,7 +24,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         //所有请求都要走认证
-        http.authorizeRequests().anyRequest().authenticated().and().httpBasic();
+      //  http.authorizeRequests().anyRequest().authenticated().and().httpBasic();
     }
 
     @Bean

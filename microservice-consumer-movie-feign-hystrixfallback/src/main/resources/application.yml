@@ -1,0 +1,16 @@
+server:
+  port: 8011
+
+api.user.url: http://localhost:8000/
+
+eureka:
+  client:
+    healthcheck:
+        enabled: true
+    serviceUrl:
+        defaultZone: http://user:123456@peer1:8761/eureka
+  instance:
+    prefer-ip-address: true
+logging:
+  level:
+    com.example.demo.feignclient.UserFeignClient: debug
